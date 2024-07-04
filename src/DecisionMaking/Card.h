@@ -8,7 +8,7 @@ namespace G5Cpp
 {
     struct Card
     {
-        enum Suite
+        enum Suit
         {
             UnknownSuite = -1,
             Clubs = 0,
@@ -37,12 +37,12 @@ namespace G5Cpp
 
     private:
         Rank _rank;
-        Suite _suite;
+        Suit _suit;
         int _value;
 
         void setValue()
         {
-            _value = (14 - (int)_rank) * 4 + (int)_suite;
+            _value = (14 - (int)_rank) * 4 + (int)_suit;
             assert (_value >= 0 && _value <= 51);
         }
 
@@ -51,7 +51,7 @@ namespace G5Cpp
         Card()
         {
             _rank = UnknownRank;
-            _suite = UnknownSuite;
+            _suit = UnknownSuite;
             _value = -1;
         }
 
@@ -59,21 +59,21 @@ namespace G5Cpp
         {
             assert (value >= 0 && value <= 51);
 
-            _suite = (Suite) (value % 4);
+            _suit = (Suit) (value % 4);
             _rank = (Rank) (14 - value / 4);
             _value = value;
         }
 
         Card(const Card& card)
         {
-            _suite = card._suite;
+            _suit = card._suit;
             _rank = card._rank;
             _value = card._value;
         }
 
-        Card(Suite aSuite, Rank aRank)
+        Card(Suit aSuite, Rank aRank)
         {
-            _suite = aSuite;
+            _suit = aSuite;
             _rank = aRank;
             setValue();
         }
@@ -81,7 +81,7 @@ namespace G5Cpp
         Card(const char* stringRepresentation)
         {
             _rank = Card::UnknownRank;
-            _suite = Card::UnknownSuite;
+            _suit = Card::UnknownSuite;
 
             char charRank = stringRepresentation[0];
             char charSuite = stringRepresentation[1];
@@ -114,16 +114,16 @@ namespace G5Cpp
                 _rank = Card::Ace;
 
             if (charSuite == 'c')
-                _suite = Card::Clubs;
+                _suit = Card::Clubs;
             else if (charSuite == 'h')
-                _suite = Card::Hearts;
+                _suit = Card::Hearts;
             else if (charSuite == 'd')
-                _suite = Card::Diamonds;
+                _suit = Card::Diamonds;
             else if (charSuite == 's')
-                _suite = Card::Spades;
+                _suit = Card::Spades;
 
             setValue();
-            assert(_suite != Card::UnknownSuite && _rank != Card::UnknownRank);
+            assert(_suit != Card::UnknownSuite && _rank != Card::UnknownRank);
         }
 
         inline Rank rank() const
@@ -131,9 +131,9 @@ namespace G5Cpp
             return _rank;
         }
 
-        inline Suite suite() const
+        inline Suit suit() const
         {
-            return _suite;
+            return _suit;
         }
 
         inline int toInt() const

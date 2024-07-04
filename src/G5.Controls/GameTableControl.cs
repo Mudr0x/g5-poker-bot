@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using G5.Logic;
 using System.Diagnostics;
-
+using System.IO;
 
 namespace G5.Controls
 {
@@ -17,7 +17,9 @@ namespace G5.Controls
         private PlayerControlSmall[] _playerControls = new PlayerControlSmall[6];
         private PictureBox[] _buttonImages = new PictureBox[6];
         private Label[] _labelsInPot = new Label[6];
+        private Label[] _labelsbbWon = new Label[6];
         private Label _labelHandsPlayed = new Label();
+        private CheckBox _checkBoxNoRebuy = new CheckBox();
         private string _raiseText;
 
         public event EventHandler NextButtonPressed;
@@ -52,7 +54,16 @@ namespace G5.Controls
             _labelsInPot[3] = labelInPot3;
             _labelsInPot[4] = labelInPot4;
             _labelsInPot[5] = labelInPot5;
+
+            _labelsbbWon[0] = labelbbWon0;
+            _labelsbbWon[1] = labelbbWon1;
+            _labelsbbWon[2] = labelbbWon2;
+            _labelsbbWon[3] = labelbbWon3;
+            _labelsbbWon[4] = labelbbWon4;
+            _labelsbbWon[5] = labelbbWon5;
+
             _labelHandsPlayed = labelHandsPlayed;
+            _checkBoxNoRebuy = checkBoxNoRebuy;
         }
 
         private Bitmap cardImage(Card card)
@@ -96,13 +107,14 @@ namespace G5.Controls
             _labelsInPot[playerId].Visible = false;
         }
 
-        public void updatePlayerInfo(int playerId, string name, int stack, int betAmount, Status statusInHand, HoleCards holeCards, 
+        public void updatePlayerInfo(int playerId, string name, int stack, int betAmount, Status statusInHand, ActionType LastAction, HoleCards holeCards, 
             Position preFlopPosition, bool toAct)
         {
             _playerControls[playerId].Visible = true;
-            _playerControls[playerId].updatePlayerInfo(name, stack, statusInHand, holeCards, preFlopPosition, toAct);
+            _playerControls[playerId].updatePlayerInfo(name, stack, statusInHand, LastAction, holeCards, preFlopPosition, toAct);
             _labelsInPot[playerId].Text = moneyToString(betAmount);
             _labelsInPot[playerId].Visible = (betAmount != 0);
+            _labelsbbWon[playerId].Visible = true;
         }
 
         public void setButtonPosition(int pos)
@@ -144,21 +156,21 @@ namespace G5.Controls
             buttonNext.Enabled = enabled;
         }
 
-        public void setupPlayerControls(int numBets, int ammountToCall, int defaultRaiseAmmount, int stackSize)
+        public void setupPlayerControls(int numBets, int amountToCall, int defaultRaiseAmmount, int stackSize)
         {
             _raiseText = (numBets > 0) ? "Raise " : "Bet ";
             buttonBetRaise.Text = _raiseText;
-            buttonCheckCall.Text = (ammountToCall > 0) ? ("Call " + moneyToString(ammountToCall)) : "Check";
-            buttonFold.Enabled = ammountToCall > 0;
+            buttonCheckCall.Text = (amountToCall > 0) ? ("Call " + moneyToString(amountToCall)) : "Check";
+            buttonFold.Enabled = amountToCall > 0;
 
-            _trackBarRaiseAmm.Minimum = ammountToCall + 4;
+            _trackBarRaiseAmm.Minimum = amountToCall + 4;
             _trackBarRaiseAmm.Maximum = stackSize;
             _trackBarRaiseAmm.TickFrequency = 1;
             _trackBarRaiseAmm.Value = (defaultRaiseAmmount < stackSize) ? defaultRaiseAmmount : stackSize;
 
-            // Can raise if ammount to call is smaller than stack...
-            buttonBetRaise.Enabled = ammountToCall < stackSize;
-            _trackBarRaiseAmm.Enabled = ammountToCall < stackSize;
+            // Can raise if amount to call is smaller than stack...
+            buttonBetRaise.Enabled = amountToCall < stackSize;
+            _trackBarRaiseAmm.Enabled = amountToCall < stackSize;
 
             trackBarRaiseAmm_Scroll(null, null);
         }
@@ -167,11 +179,27 @@ namespace G5.Controls
         {
             listBoxLog.Items.Add(str);
             listBoxLog.SelectedIndex = listBoxLog.Items.Count - 1;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(str);
+            Console.ResetColor();
+
+            // Output logs to HandHistory log file
+            File.AppendAllText("handhistory.txt", str + "\n");
         }
 
         public void updateHandsPlayed(int handsplayed)
         {
-            _labelHandsPlayed.Text = Convert.ToString(handsplayed);
+            _labelHandsPlayed.Text = handsplayed.ToString();
+        }
+
+        public void updatebbWon(int index, int rebuyCount, double bb100)
+        {
+            _labelsbbWon[index].Text = rebuyCount.ToString() + " rb " + bb100.ToString() + "bb/100";
+        }
+
+        public bool getNoRebuy()
+        {
+            return _checkBoxNoRebuy.Checked;
         }
 
         private void buttonNext_Click(object sender, EventArgs e)

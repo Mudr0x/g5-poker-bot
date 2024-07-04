@@ -5,8 +5,8 @@ namespace G5.Logic
 {
     public class HoleCards
     {
-        public Card Card0 { get; private set; }
-        public Card Card1 { get; private set; }
+        public Card Card0 { get; set; }
+        public Card Card1 { get; set; }
 
         public HoleCards(int index)
         {
@@ -57,7 +57,7 @@ namespace G5.Logic
             SortCards();
         }
 
-        public HoleCards(Card.Rank rank1, Card.Suite suite1, Card.Rank rank2, Card.Suite suite2)
+        public HoleCards(Card.Rank rank1, Card.Suit suite1, Card.Rank rank2, Card.Suit suite2)
         {
             Card0 = new Card(suite1, rank1);
             Card1 = new Card(suite2, rank2);

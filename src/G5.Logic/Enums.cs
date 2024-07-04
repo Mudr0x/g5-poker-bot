@@ -16,7 +16,7 @@
     }
 
     /// <summary>
-    /// Tip igre (Omaha, Hold'Em ...)
+    /// Game type (Omaha, Hold'Em ...)
     /// </summary>
     public enum GameType
     {
@@ -51,7 +51,7 @@
     };
 
     /// <summary>
-    /// Stanje u kome moze biti igra (Flop, Turn, River...)
+    /// A state in which there can be a game (Flop, Turn, River...)
     /// </summary>
     public enum Street
     {
@@ -68,12 +68,12 @@
     /// </summary>
     public enum Position
     {
-        SmallBlind = 0,
-        BigBlind = 1,
-        UTG = 2,
-        HJ = 3,
-        CutOff = 4,
-        Button = 5,
+        BU = 0,
+        SB = 1,
+        BB = 2,
+        UTG = 3,
+        HJ = 4,
+        CO = 5,
         Empty = 6,
     }
 

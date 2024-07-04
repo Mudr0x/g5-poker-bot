@@ -195,30 +195,30 @@ namespace G5.Logic
         {
             int total = 0;
 
-            for (Card.Suite s11 = Card.Suite.Clubs; s11 <= Card.Suite.Spades; s11++)
+            for (Card.Suit s11 = Card.Suit.Clubs; s11 <= Card.Suit.Spades; s11++)
             {
-                for (Card.Suite s12 = Card.Suite.Clubs; s12 <= Card.Suite.Spades; s12++)
+                for (Card.Suit s12 = Card.Suit.Clubs; s12 <= Card.Suit.Spades; s12++)
                 {
-                    if (!DoSuitsAgree(hand1.Card1.suite, hand1.Card0.suite, s12, s11))
+                    if (!DoSuitsAgree(hand1.Card1.suit, hand1.Card0.suit, s12, s11))
                         continue;
 
-                    for (Card.Suite s21 = Card.Suite.Clubs; s21 <= Card.Suite.Spades; s21++)
+                    for (Card.Suit s21 = Card.Suit.Clubs; s21 <= Card.Suit.Spades; s21++)
                     {
-                        if (!DoSuitsAgree(hand2.Card0.suite, hand1.Card0.suite, s21, s11))
+                        if (!DoSuitsAgree(hand2.Card0.suit, hand1.Card0.suit, s21, s11))
                             continue;
 
-                        if (!DoSuitsAgree(hand2.Card0.suite, hand1.Card1.suite, s21, s12))
+                        if (!DoSuitsAgree(hand2.Card0.suit, hand1.Card1.suit, s21, s12))
                             continue;
 
-                        for (Card.Suite s22 = Card.Suite.Clubs; s22 <= Card.Suite.Spades; s22++)
+                        for (Card.Suit s22 = Card.Suit.Clubs; s22 <= Card.Suit.Spades; s22++)
                         {
-                            if (!DoSuitsAgree(hand2.Card1.suite, hand1.Card0.suite, s22, s11))
+                            if (!DoSuitsAgree(hand2.Card1.suit, hand1.Card0.suit, s22, s11))
                                 continue;
 
-                            if (!DoSuitsAgree(hand2.Card1.suite, hand1.Card1.suite, s22, s12))
+                            if (!DoSuitsAgree(hand2.Card1.suit, hand1.Card1.suit, s22, s12))
                                 continue;
 
-                            if (!DoSuitsAgree(hand2.Card1.suite, hand2.Card0.suite, s22, s21))
+                            if (!DoSuitsAgree(hand2.Card1.suit, hand2.Card0.suit, s22, s21))
                                 continue;
 
                             HoleCards hand1_new = new HoleCards(hand1.Card0.rank, s11, hand1.Card1.rank, s12);
@@ -234,7 +234,7 @@ namespace G5.Logic
             return total;
         }
 
-        private static bool DoSuitsAgree(Card.Suite s1_old, Card.Suite s2_old, Card.Suite s1_new, Card.Suite s2_new)
+        private static bool DoSuitsAgree(Card.Suit s1_old, Card.Suit s2_old, Card.Suit s1_new, Card.Suit s2_new)
         {
             return (s1_old == s2_old && s1_new == s2_new) || (s1_old != s2_old && s1_new != s2_new);
         }

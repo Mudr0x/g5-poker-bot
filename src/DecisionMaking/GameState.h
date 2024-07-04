@@ -18,7 +18,7 @@ namespace G5Cpp
         int maxMoneyInThePot() const;
         bool areBetsLeft() const;
         int potSize() const;
-        int getRaiseAmmount() const;
+        int getRaiseAmount() const;
         int numActiveNonAllInPlayers() const;
 
     public:

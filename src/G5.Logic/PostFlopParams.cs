@@ -104,7 +104,7 @@ namespace G5.Logic
 
             if (prevActionMod == -1)
             {
-                Console.WriteLine($"Warninig!: prevActionMod is -1, prevAction: {prevActionMod}");
+                Console.WriteLine($"Warning!: prevActionMod is -1, prevAction: {prevActionMod}");
                 prevActionMod = 0;
             }
 
@@ -145,7 +145,7 @@ namespace G5.Logic
 
                 if (a0 == -1)
                 {
-                    Console.WriteLine($"Warninig!: a0 is -1, Street: {Street}");
+                    Console.WriteLine($"Warning!: a0 is -1, Street: {Street}");
                     a0 = 0;
                 }
 

@@ -60,13 +60,13 @@ namespace G5.Acpc
                     if (tcpClient.Connected && nempty < 20)
                     {
                         nempty++;
-                        Console.WriteLine("Recieved {0} empty message.", nempty);
+                        Console.WriteLine("Received {0} empty message.", nempty);
                         System.Threading.Thread.Sleep(50);
                         continue;
                     }
                     else
                     {
-                        Console.WriteLine("Recieved too many empty messages  or tcpClient is disconected, ending the match.");
+                        Console.WriteLine("Received too many empty messages  or tcpClient is disconected, ending the match.");
                         game.finishHand();
                         Console.WriteLine("Total Saldo: {0}", game.TotalSaldo);
                         break;

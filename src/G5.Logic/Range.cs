@@ -204,7 +204,7 @@ namespace G5.Logic
 
                 if (holecards.Card0.rank != holecards.Card1.rank)
                 {
-                    if (holecards.Card0.suite == holecards.Card1.suite)
+                    if (holecards.Card0.suit == holecards.Card1.suit)
                     {
                         key += "s";
                     }

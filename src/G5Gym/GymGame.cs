@@ -118,7 +118,7 @@ namespace G5Gym
             {
                 var startTime = DateTime.Now;
                 _opponentModeling?.addHand(_botGameStates[0].getCurrentHand());
-                Console.WriteLine($"Opponent modelling added hand [{DateTime.Now - startTime}]");
+                Console.WriteLine($"Opponent modeling added hand [{DateTime.Now - startTime}]");
             }
 
             var saldo = new int[_numPlayers];
@@ -139,7 +139,7 @@ namespace G5Gym
             var board = _botGameStates[0].getBoard().Cards.ConvertAll((card) => card.ToRankSuite());
 
             while (board.Count < 5)
-                board.Add(new { rank = -1, suite = -1 });
+                board.Add(new { rank = -1, suit = -1 });
 
             var actionsToRet = new List<dynamic>();
             var actionList = _botGameStates[0].getCurrentHand().ActionList;
@@ -158,7 +158,7 @@ namespace G5Gym
 
                 while (j < 5)
                 {
-                    actionsToRet.Add(new { type = "none", ammount = 0 });
+                    actionsToRet.Add(new { type = "none", amount = 0 });
                     j++;
                 }
             }

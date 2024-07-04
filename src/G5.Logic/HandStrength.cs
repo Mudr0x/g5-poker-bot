@@ -274,10 +274,10 @@ namespace G5.Logic
         {
             Debug.Assert(cards.Length == 5);
 
-            bool isFlush = (cards[0].suite == cards[1].suite) &&
-                           (cards[0].suite == cards[2].suite) &&
-                           (cards[0].suite == cards[3].suite) &&
-                           (cards[0].suite == cards[4].suite);
+            bool isFlush = (cards[0].suit == cards[1].suit) &&
+                           (cards[0].suit == cards[2].suit) &&
+                           (cards[0].suit == cards[3].suit) &&
+                           (cards[0].suit == cards[4].suit);
 
             bool isSFlush = false;
 
@@ -390,10 +390,10 @@ namespace G5.Logic
         {
             Debug.Assert(cards.Length == 5);
 
-            bool isFlush = (cards[0].suite == cards[1].suite) &&
-                           (cards[0].suite == cards[2].suite) &&
-                           (cards[0].suite == cards[3].suite) &&
-                           (cards[0].suite == cards[4].suite);
+            bool isFlush = (cards[0].suit == cards[1].suit) &&
+                           (cards[0].suit == cards[2].suit) &&
+                           (cards[0].suit == cards[3].suit) &&
+                           (cards[0].suit == cards[4].suit);
 
             if (isFlush)
             {

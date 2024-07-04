@@ -71,7 +71,7 @@ namespace G5.Logic
         /// <summary>
         /// Board and hand are expected to be sorted
         /// </summary>
-        private static int GetFlushRank(HoleCards heroHoleCards, Card[] sortedBoard, Card.Suite suite)
+        private static int GetFlushRank(HoleCards heroHoleCards, Card[] sortedBoard, Card.Suit suit)
         {
             Card[] allCards = new Card[7];
 
@@ -82,7 +82,7 @@ namespace G5.Logic
 
             for (int n = 5, k = 0; n > 0; k++)
             {
-                if (allCards[k].suite == suite)
+                if (allCards[k].suit == suit)
                 {
                     sum += weight * (int)allCards[k].rank;
                     weight /= 15;
@@ -180,9 +180,9 @@ namespace G5.Logic
             return streight0;
         }
 
-        private Card.Suite GetFlushSuite()
+        private Card.Suit GetFlushSuite()
         {
-            return (Card.Suite)(flush);
+            return (Card.Suit)(flush);
         }
 
         private int GetFullRank()
@@ -438,7 +438,7 @@ namespace G5.Logic
         public void AddCard(Card card)
         {
             int r = (int)card.rank;
-            int s = (int)card.suite;
+            int s = (int)card.suit;
 
             ranks[r]++;
             suits[s]++;
@@ -467,7 +467,7 @@ namespace G5.Logic
         public void RemoveCard(Card card)
         {
             int r = (int)card.rank;
-            int s = (int)card.suite;
+            int s = (int)card.suit;
 
             ranks[r]--;
             suits[s]--;
@@ -536,7 +536,7 @@ namespace G5.Logic
                 }
                 else if (flush >= 0)
                 {
-                    int flushRank = GetFlushRank(holeCards, sortedBoard, (Card.Suite)flush);
+                    int flushRank = GetFlushRank(holeCards, sortedBoard, (Card.Suit)flush);
 
                     strength = ((int)HandRank.Flush) * base5 +
                                 flushRank * base0;

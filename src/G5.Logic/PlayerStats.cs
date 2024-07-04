@@ -226,16 +226,16 @@ namespace G5.Logic
             int playerPos = playerList.FindIndex(name => name == playerName);
 
             if (playerPos == 0)
-                return Position.SmallBlind;
+                return Position.SB;
 
             if (playerPos == 1)
-                return Position.BigBlind;
+                return Position.BB;
 
             if (playerPos == playerList.Count - 1)
-                return Position.Button;
+                return Position.BU;
 
             if (playerPos == playerList.Count - 2)
-                return Position.CutOff;
+                return Position.CO;
 
             if (playerPos == playerList.Count - 3)
                 return Position.HJ;
@@ -244,7 +244,7 @@ namespace G5.Logic
                 return Position.UTG;
 
             Debug.Assert(false);
-            return Position.Button;
+            return Position.BU;
         }
 
         private static bool inPosition(List<string> playerList, string playerName, int numPlayers)

@@ -76,7 +76,7 @@ namespace G5Cpp
     };
 
     /// <summary>
-    /// Moguce akcije igraca: Fold, Call, Check, ukljucujuci Wins, MoneyReturned...
+    /// Possible player actions: Fold, Call, Check, including Wins, MoneyReturned...
     /// </summary>
     enum ActionType
     {

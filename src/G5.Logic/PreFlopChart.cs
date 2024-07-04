@@ -161,10 +161,10 @@ namespace G5.Logic
 
         public ActionDistribution GetActionDistribution(HoleCards holeCards)
         {
-            string suite = (holeCards.Card0.suite == holeCards.Card1.suite) ? "s" : "o";
+            string suit = (holeCards.Card0.suit == holeCards.Card1.suit) ? "s" : "o";
 
             if (holeCards.Card0.rank == holeCards.Card1.rank)
-                suite = "";
+                suit = "";
 
             string rank_str = "";
 
@@ -179,7 +179,7 @@ namespace G5.Logic
                 rank_str += Card.RankToString(holeCards.Card0.rank);
             }
 
-            string key = rank_str + suite;
+            string key = rank_str + suit;
             return actionDist[key];
         }
     }

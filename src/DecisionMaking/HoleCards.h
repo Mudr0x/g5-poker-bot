@@ -60,7 +60,7 @@ namespace G5Cpp
             sortCards();
         }
 
-        HoleCards(Card::Rank rank0, Card::Suite suite0, Card::Rank rank1, Card::Suite suite1) : Card0(suite0, rank0), Card1(suite1, rank1)
+        HoleCards(Card::Rank rank0, Card::Suit suite0, Card::Rank rank1, Card::Suit suite1) : Card0(suite0, rank0), Card1(suite1, rank1)
         {
             sortCards();
         }

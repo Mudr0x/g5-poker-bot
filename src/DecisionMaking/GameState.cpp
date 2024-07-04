@@ -84,17 +84,17 @@ namespace G5Cpp
             numActiveNonAllInPlayers() > 1;
     }
 
-    int GameState::getRaiseAmmount() const
+    int GameState::getRaiseAmount() const
     {
-        int ammountToCall = maxMoneyInThePot() - playerToAct().moneyInPot();
+        int amountToCall = maxMoneyInThePot() - playerToAct().moneyInPot();
 
         if (street == Street_PreFlop)
         {
-            return potSize() + 2 * ammountToCall;
+            return potSize() + 2 * amountToCall;
         }
         else
         {
-            return (RAISE_SIZE_NOM * (potSize() + ammountToCall)) / RAISE_SIZE_DEN + ammountToCall;
+            return (RAISE_SIZE_NOM * (potSize() + amountToCall)) / RAISE_SIZE_DEN + amountToCall;
         }
     }
 
@@ -452,8 +452,8 @@ namespace G5Cpp
     GameState GameState::playerBetRaises(float betRaiseProb, float checkCallProb, float nodeProbability) const
     {
         GameState newPrms(*this);
-        int raiseAmount = newPrms.getRaiseAmmount();
-        int ammountToCall = getAmountToCall();
+        int raiseAmount = newPrms.getRaiseAmount();
+        int amountToCall = getAmountToCall();
 
         if ((3 * raiseAmount / 2) >= newPrms.playerToAct().stack())
         {
@@ -467,7 +467,7 @@ namespace G5Cpp
 
         if (newPrms.playerToActInd != newPrms.heroInd)
         {
-            if (ammountToCall == 0)
+            if (amountToCall == 0)
             {
                 newPrms.playerToAct().cutRange_CheckBet(Action_Bet, newPrms.board, betRaiseProb, gc);
             }

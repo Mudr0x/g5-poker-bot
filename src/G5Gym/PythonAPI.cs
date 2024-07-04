@@ -45,7 +45,7 @@ namespace G5Gym
                 throw new InvalidOperationException("Not supported table type");
             }
 
-            Console.WriteLine("Created opponent modelling successfully");
+            Console.WriteLine("Created opponent modeling successfully");
         }
 
         public dynamic testCallArray()

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace G5.Logic.Estimators
 {
     /// <summary>
-    /// This is old (modelling) estimator. Estimates player model using Bayesian estimation.
+    /// This is old (modeling) estimator. Estimates player model using Bayesian estimation.
     /// Than plays exploitevly to maximaze EV.
     /// </summary>
     public class ModelingEstimator : IActionEstimator
@@ -18,9 +18,9 @@ namespace G5.Logic.Estimators
         private DecisionMakingContext _dmContext;
         private PokerClient _pokerClient;
 
-        public ModelingEstimator(OpponentModeling oppModelling, PokerClient pokerClient)
+        public ModelingEstimator(OpponentModeling oppmodeling, PokerClient pokerClient)
         {
-            _opponentModeling = oppModelling;
+            _opponentModeling = oppmodeling;
             _pokerClient = pokerClient;
             _dmContext = new DecisionMakingContext();
         }

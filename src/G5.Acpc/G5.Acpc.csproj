@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <Platforms>AnyCPU</Platforms>
         <OutputType>Exe</OutputType>
+        <Configurations>Debug;Release;Release-final</Configurations>
     </PropertyGroup>
 
     <ItemGroup>

@@ -57,5 +57,5 @@ namespace G5Cpp
     };
 
     int holdem_GetHandStrengthSorted(const HoleCards& heroHoleCards, const Card* sortedBoard, int boardLen);
-    int holdem_GetFlushRank(const HoleCards& heroHoleCards, const Card* sortedBoard, int boardLen, Card::Suite suite);
+    int holdem_GetFlushRank(const HoleCards& heroHoleCards, const Card* sortedBoard, int boardLen, Card::Suit suit);
 }

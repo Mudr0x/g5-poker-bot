@@ -112,7 +112,7 @@ namespace G5Cpp
         float estimateEV(DMStats& stats, const GameState& prms);
 
         /// <summary>
-        /// Racuna hero EV ako je hero na potezu.
+        /// Calculate the hero EV if it is the hero's turn.
         /// </summary>
         void estimateEV_HeroPlays(float& checkCallEV, float& betRaiseEV, DMStats& stats, const GameState& prms)
         {
@@ -137,7 +137,7 @@ namespace G5Cpp
         }
 
         /// <summary>
-        /// Racuna EV ako je villain na potezu.
+        /// Calculate the villain EV if it is the villain's turn.
         /// </summary>
         float estimateEV_VillainPlays(DMStats& stats, const GameState& prms)
         {

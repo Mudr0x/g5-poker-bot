@@ -19,7 +19,7 @@ namespace G5.Logic
         public int MoneyInPot { get; private set; }
         public int MoneyWon { get; private set; }
 
-        public Player(string aName, int stack, PlayerModel playerModel)
+        public Player(string aName, int stack, PlayerModel playerModel, Position position)
         {
             Name = aName;
             Stack = stack;
@@ -30,7 +30,7 @@ namespace G5.Logic
             StatusInHand = Status.ToAct;
             LastAction = ActionType.Fold;
             PrevStreetAction = ActionType.Fold;
-            PreFlopPosition = Position.UTG;
+            PreFlopPosition = position;
 
             Range = new Range();
             Model = playerModel;
@@ -66,6 +66,11 @@ namespace G5.Logic
         public void BringsIn(int amount)
         {
             Stack += amount;
+        }
+
+        public void SetStartingPlayerPositions()
+        {
+
         }
 
         public void Posts(int amount)

@@ -7,16 +7,16 @@
         public ActionType Type;
 
         /// <summary>
-        /// Raise by ammount.
+        /// Raise by amount.
         /// </summary>
         public int Amount;
 
-        public Action(Street aStreet, string aPlayerName, ActionType aType, int aAmmount)
+        public Action(Street aStreet, string aPlayerName, ActionType aType, int aAmount)
         {
             Street = aStreet;
             PlayerName = aPlayerName;
             Type = aType;
-            Amount = aAmmount;
+            Amount = aAmount;
         }
 
         public dynamic toDynamic()
@@ -30,7 +30,7 @@
             else
                 typeToRet = "cc";
 
-            return new { type = typeToRet, ammount = Amount };
+            return new { type = typeToRet, amount = Amount };
         }
 
         public bool IsRaiseAction

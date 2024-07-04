@@ -507,9 +507,9 @@ namespace G5Cpp
             assert(_flopCards[1].rank() == board.card[1].rank());
             assert(_flopCards[2].rank() == board.card[2].rank());
 
-            assert(_flopCards[0].suite() == board.card[0].suite());
-            assert(_flopCards[1].suite() == board.card[1].suite());
-            assert(_flopCards[2].suite() == board.card[2].suite());
+            assert(_flopCards[0].suit() == board.card[0].suit());
+            assert(_flopCards[1].suit() == board.card[1].suit());
+            assert(_flopCards[2].suit() == board.card[2].suit());
         }
     }
 

@@ -31,7 +31,7 @@ namespace G5.Logic
                     var cardStr = stringRepresentation.Substring(i, 2);
                     var card = new Card(cardStr);
 
-                    if (card.rank != Card.Rank.Unknown && card.suite != Card.Suite.Unknown)
+                    if (card.rank != Card.Rank.Unknown && card.suit != Card.Suit.Unknown)
                     {
                         Cards.Add(card);
                     }

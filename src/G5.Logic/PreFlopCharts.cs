@@ -33,13 +33,13 @@ namespace G5.Logic
             else if (shorthand == "HJ")
                 return Position.HJ;
             else if (shorthand == "CO")
-                return Position.CutOff;
+                return Position.CO;
             else if (shorthand == "BTN")
-                return Position.Button;
+                return Position.BU;
             else if (shorthand == "SB")
-                return Position.SmallBlind;
+                return Position.SB;
             else if (shorthand == "BB")
-                return Position.BigBlind;
+                return Position.BB;
 
             Console.WriteLine($"Warning shorthandToPosition is Empty");
 
@@ -48,7 +48,7 @@ namespace G5.Logic
 
         public PreFlopCharts(string path)
         {
-            Console.WriteLine($"Reading pre flop charts from {path}.");
+            Console.WriteLine($"Reading preflop charts from {path}.");
             int numLoaded = 0;
 
             foreach (Position heroPosition in Enum.GetValues(typeof(Position)))
@@ -82,7 +82,7 @@ namespace G5.Logic
                     if (position != Position.Empty)
                     {
                         vs_0_bets_charts[position] = new PreFlopChart(file);
-                        Console.WriteLine($"Loaded pre flop chart for {position} RFI from {fileName}.");
+                        Console.WriteLine($"Loaded preflop chart for {position} RFI from {fileName}.");
                         numLoaded++;
                     }
                 }
@@ -92,7 +92,7 @@ namespace G5.Logic
                     var position_villian = shorthandToPosition(parts[6]);
 
                     vs_1_bet_charts[position_hero][position_villian] = new PreFlopChart(file);
-                    Console.WriteLine($"Loaded pre flop chart for {position_hero} facing RFI of {position_villian} from {fileName}.");
+                    Console.WriteLine($"Loaded preflop chart for {position_hero} facing RFI of {position_villian} from {fileName}.");
                     numLoaded++;
                 }
                 else if (fileName.StartsWith("VS_2_Bets_RR_") && parts.Length > 7)
@@ -101,7 +101,7 @@ namespace G5.Logic
                     var position_villian = shorthandToPosition(parts[7]);
 
                     vs_2_bets_reraise_charts[position_hero][position_villian] = new PreFlopChart(file);
-                    Console.WriteLine($"Loaded pre flop chart for {position_hero} facing reraise of {position_villian} from {fileName}.");
+                    Console.WriteLine($"Loaded preflop chart for {position_hero} facing reraise of {position_villian} from {fileName}.");
                     numLoaded++;
                 }
                 else if (fileName.StartsWith("VS_2_Bets_") && parts.Length > 7)
@@ -111,7 +111,7 @@ namespace G5.Logic
                     var position_villian2 = shorthandToPosition(parts[7]);
 
                     vs_2_bets_charts[position_hero][position_villian1][position_villian2] = new PreFlopChart(file);
-                    Console.WriteLine($"Loaded pre flop chart for {position_hero} facing raises of {position_villian1} and {position_villian2} from {fileName}.");
+                    Console.WriteLine($"Loaded preflop chart for {position_hero} facing raises of {position_villian1} and {position_villian2} from {fileName}.");
                     numLoaded++;
                 }
                 else if (fileName.StartsWith("VS_3_Bets_") && parts.Length > 6)
@@ -120,7 +120,7 @@ namespace G5.Logic
                     var position_villian = shorthandToPosition(parts[6]);
 
                     vs_3_bets_charts[position_hero][position_villian] = new PreFlopChart(file);
-                    Console.WriteLine($"Loaded pre flop chart for {position_hero} facing 3 bets of {position_villian} from {fileName}.");
+                    Console.WriteLine($"Loaded preflop chart for {position_hero} facing 3 bets of {position_villian} from {fileName}.");
                     numLoaded++;
                 }
                 else if (fileName.StartsWith("VS_4_Bets_") && parts.Length > 6)
@@ -129,12 +129,12 @@ namespace G5.Logic
                     var position_villian = shorthandToPosition(parts[6]);
 
                     vs_4_bets_charts[position_hero][position_villian] = new PreFlopChart(file);
-                    Console.WriteLine($"Loaded pre flop chart for {position_hero} facing 4 bets of {position_villian} from {fileName}.");
+                    Console.WriteLine($"Loaded preflop chart for {position_hero} facing 4 bets of {position_villian} from {fileName}.");
                     numLoaded++;
                 }
             }
 
-            Console.WriteLine($"Loaded {numLoaded} pre flop charts");
+            Console.WriteLine($"Loaded {numLoaded} preflop charts");
         }
 
         public ActionDistribution GetActionDistribution(BotGameState gameState, int preFlopChartsLevel)

@@ -25,11 +25,14 @@ namespace G5.Controls
             return (Bitmap)(obj);
         }
 
-        public void updatePlayerInfo(string name, int stack, Status statusInHand, HoleCards holeCards, Position position, bool toAct)
+        public void updatePlayerInfo(string name, int stack, Status statusInHand, ActionType LastAction, HoleCards holeCards, Position position, bool toAct)
         {
             labelName.Text = name + " (" + position.ToString() + ")";
             labelStack.Text = "$" + (stack / 100.0f).ToString("f2");
-            labelStatus.Text = statusInHand.ToString();
+            if (statusInHand == Status.ToAct)
+                labelStatus.Text = statusInHand.ToString();
+            else
+                labelStatus.Text = LastAction.ToString();
             labelPosition.Text = ""; // position.ToString();
 
             pictureHH1.Visible = (statusInHand != Status.Folded);

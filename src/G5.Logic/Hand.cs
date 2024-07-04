@@ -24,6 +24,7 @@ namespace G5.Logic
         public List<string> PlayersNames;
 
         public HoleCards HeroHoleCards;
+        public List<HoleCards> PlayersHoleCards;
         public Board Board;
         public List<Action> ActionList;
         public List<int> PlayerBalanceChanges;
@@ -130,9 +131,9 @@ namespace G5.Logic
             Debug.Assert(Math.Abs(moneyBalance) < 11);
         }
 
-        public void addAction(Street street, string playerName, ActionType type, int ammount)
+        public void addAction(Street street, string playerName, ActionType type, int amount)
         {
-            ActionList.Add(new Action(street, playerName, type, ammount));
+            ActionList.Add(new Action(street, playerName, type, amount));
         }
     }
 }

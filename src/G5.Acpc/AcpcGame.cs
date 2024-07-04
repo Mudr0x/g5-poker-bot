@@ -198,7 +198,7 @@ namespace G5.Acpc
             if (_prevMatchState == null)
                 return;
 
-            Console.WriteLine("Ending preveous hand");
+            Console.WriteLine("Ending previous hand");
             var handStrengths = new List<int>();
 
             if (_prevMatchState.board.Count == 5)
@@ -252,7 +252,7 @@ namespace G5.Acpc
             var startTime = DateTime.Now;
             _opponentModeling.addHand(_botGameState.getCurrentHand());
 
-            Console.WriteLine("Opponent modelling added hand " + timeToString(DateTime.Now - startTime));
+            Console.WriteLine("Opponent modeling added hand " + timeToString(DateTime.Now - startTime));
         }
 
         private string timeToString(double timeSec)

@@ -4,14 +4,14 @@ using System.Diagnostics;
 namespace G5.Logic
 {
     /// <summary>
-    /// Struktura koja opisuje jednu kartu. Sadrzi boju i rank.
+    /// A structure that describes a single card. Contains suit and rank.
     /// </summary>
     public struct Card
     {
         /// <summary>
-        /// Enum koji prestavlja boju (suite) karte
+        /// An enum that represents the suit of the card
         /// </summary>
-        public enum Suite
+        public enum Suit
         {
             Unknown = -1,
             Clubs = 0,
@@ -21,12 +21,12 @@ namespace G5.Logic
         };
 
         /// <summary>
-        /// Enum koji prestavlja broj (rank) karte
+        /// An enum that represents the number (rank) of the card
         /// </summary>
         public enum Rank
         {
             Unknown = 0,
-            Deuce   = 2,
+            Deuce = 2,
             Three,
             Four,
             Five,
@@ -42,44 +42,44 @@ namespace G5.Logic
         }
 
         /// <summary>
-        /// Broj/rank karte
+        /// Card number/rank
         /// </summary>
         public Rank rank { get; set; }
 
         /// <summary>
-        /// Boja/znak/suite karte
+        /// Color/sign/suit of cards
         /// </summary>
-        public Suite suite { get; set; }
+        public Suit suit { get; set; }
 
         public Card(int value) : this()
         {
             Debug.Assert(value >= 0 && value <= 51);
 
-            suite = (Suite)(value % 4);
+            suit = (Suit)(value % 4);
             rank = (Rank)(14 - value / 4);
         }
 
         /// <summary>
-        /// Formira kartu od boje i ranka
+        /// Forms a suit and rank card
         /// </summary>
-        /// <param name="aSuite">Boja buduce karte</param>
-        /// <param name="aRank">Rank buduce karte</param>
-        public Card(Suite aSuite, Rank aRank) : this()
+        /// <param name="aSuite">The suit of the future card</param>
+        /// <param name="aRank">Rank of future cards</param>
+        public Card(Suit aSuite, Rank aRank) : this()
         {
-            suite = aSuite;
+            suit = aSuite;
             rank = aRank;
         }
 
         /// <summary>
-        /// Karta se formira od stringa (Jh Ad 3c)
+        /// The cards are formed from a string (Jh Ad 3c)
         /// </summary>
-        /// <param name="stringRepresentation">String koji predstavlja kartu (Jh Ad 3c)</param>
+        /// <param name="stringRepresentation">A string representing the cards (Jh Ad 3c)</param>
         public Card(string stringRepresentation) : this()
         {
             Debug.Assert(stringRepresentation != null && (stringRepresentation.Length == 2 || stringRepresentation.Length == 3));
 
             rank = Rank.Unknown;
-            suite = Suite.Unknown;
+            suit = Suit.Unknown;
 
             if (stringRepresentation.Length == 2)
             {
@@ -114,13 +114,13 @@ namespace G5.Logic
                     rank = Rank.Ace;
 
                 if (charSuite == 'c')
-                    suite = Suite.Clubs;
+                    suit = Suit.Clubs;
                 else if (charSuite == 'h')
-                    suite = Suite.Hearts;
+                    suit = Suit.Hearts;
                 else if (charSuite == 'd')
-                    suite = Suite.Diamonds;
+                    suit = Suit.Diamonds;
                 else if (charSuite == 's')
-                    suite = Suite.Spades;
+                    suit = Suit.Spades;
             }
             else if (stringRepresentation.Length == 3)
             {
@@ -131,16 +131,16 @@ namespace G5.Logic
                     rank = Rank.Ten;
 
                 if (charSuite == 'c')
-                    suite = Suite.Clubs;
+                    suit = Suit.Clubs;
                 else if (charSuite == 'h')
-                    suite = Suite.Hearts;
+                    suit = Suit.Hearts;
                 else if (charSuite == 'd')
-                    suite = Suite.Diamonds;
+                    suit = Suit.Diamonds;
                 else if (charSuite == 's')
-                    suite = Suite.Spades;
+                    suit = Suit.Spades;
             }
 
-            Debug.Assert(suite != Suite.Unknown && rank != Rank.Unknown);
+            Debug.Assert(suit != Suit.Unknown && rank != Rank.Unknown);
         }
 
         public static string RankToString(Rank rank)
@@ -181,22 +181,22 @@ namespace G5.Logic
         {
             string stringCard = null;
 
-            if (suite == Suite.Clubs)
+            if (suit == Suit.Clubs)
                 stringCard += "c";
-            else if (suite == Suite.Diamonds)
+            else if (suit == Suit.Diamonds)
                 stringCard += "d";
-            else if (suite == Suite.Hearts)
+            else if (suit == Suit.Hearts)
                 stringCard += "h";
-            else if (suite == Suite.Spades)
+            else if (suit == Suit.Spades)
                 stringCard += "s";
 
             return stringCard;
         }
 
         /// <summary>
-        /// Vraca string reprezentaciju karte (Tc, As, Kd, Qh ....)
+        /// Returns a string representation of the cards (Tc, As, Kd, Qh ....)
         /// </summary>
-        /// <returns>String reprezentaciju karte (Tc, As, Kd, Qh ....)</returns>
+        /// <returns>String representation of the cards (Tc, As, Kd, Qh ....)</returns>
         override public string ToString()
         {
             return RankToString(rank) + SuiteToString();
@@ -204,7 +204,7 @@ namespace G5.Logic
 
         public int ToInt()
         {
-            int value = (14 - (int)rank) * 4 + (int)suite;
+            int value = (14 - (int)rank) * 4 + (int)suit;
             Debug.Assert(value >= 0 && value <= 51);
 
             return value;
@@ -212,7 +212,7 @@ namespace G5.Logic
 
         public dynamic ToRankSuite()
         {
-            return new { rank = (int)rank - 2, suite = (int)suite };
+            return new { rank = (int)rank - 2, suit = (int)suit };
         }
 
         public static List<Card> StringToCards(string stringRepresentation)

@@ -124,9 +124,9 @@ namespace G5Cpp
         return streight0;
     }
 
-    Card::Suite HandStrengthCounter::getFlushSuite() const
+    Card::Suit HandStrengthCounter::getFlushSuite() const
     {
-        return (Card::Suite) (flush);
+        return (Card::Suit) (flush);
     }
 
     int HandStrengthCounter::getFullRank() const
@@ -388,7 +388,7 @@ namespace G5Cpp
     void HandStrengthCounter::addCard(const Card& card)
     {
         int r = (int)card.rank();
-        int s = (int)card.suite();
+        int s = (int)card.suit();
 
         ranks[r]++;
         suits[s]++;
@@ -417,7 +417,7 @@ namespace G5Cpp
     void HandStrengthCounter::removeCard(const Card& card)
     {
         int r = (int)card.rank();
-        int s = (int)card.suite();
+        int s = (int)card.suit();
 
         ranks[r]--;
         suits[s]--;
@@ -486,7 +486,7 @@ namespace G5Cpp
             }
             else if (flush >= 0)
             {
-                int flushRank = holdem_GetFlushRank(holeCards, sortedBoard, boardLen, (Card::Suite)flush);
+                int flushRank = holdem_GetFlushRank(holeCards, sortedBoard, boardLen, (Card::Suit)flush);
 
                 strength = ((int)Rank_Flush) * base5 +
                             flushRank * base0;

@@ -93,13 +93,13 @@ namespace G5.Logic
         struct Unmanaged_Card
         {
             public int rank;
-            public int suite;
+            public int suit;
             public int value;
 
             public Unmanaged_Card(Card card)
             {
                 rank = (int)card.rank;
-                suite = (int)card.suite;
+                suit = (int)card.suit;
                 value = card.ToInt();
             }
         };

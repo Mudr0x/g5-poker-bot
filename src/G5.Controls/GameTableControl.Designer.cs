@@ -42,6 +42,22 @@
             this.labelInPot5 = new System.Windows.Forms.Label();
             this.labelPot = new System.Windows.Forms.Label();
             this.listBoxLog = new System.Windows.Forms.ListBox();
+            this._trackBarRaiseAmm = new System.Windows.Forms.TrackBar();
+            this.labelHandsPlayed = new System.Windows.Forms.Label();
+            this.labelhands = new System.Windows.Forms.Label();
+            this.checkBoxNoRebuy = new System.Windows.Forms.CheckBox();
+            this.labelbbWon0 = new System.Windows.Forms.Label();
+            this.labelbbWon1 = new System.Windows.Forms.Label();
+            this.labelbbWon2 = new System.Windows.Forms.Label();
+            this.labelbbWon3 = new System.Windows.Forms.Label();
+            this.labelbbWon4 = new System.Windows.Forms.Label();
+            this.labelbbWon5 = new System.Windows.Forms.Label();
+            this.playerControlSmall5 = new G5.Controls.PlayerControlSmall();
+            this.playerControlSmall4 = new G5.Controls.PlayerControlSmall();
+            this.playerControlSmall3 = new G5.Controls.PlayerControlSmall();
+            this.playerControlSmall2 = new G5.Controls.PlayerControlSmall();
+            this.playerControlSmall1 = new G5.Controls.PlayerControlSmall();
+            this.playerControlSmall0 = new G5.Controls.PlayerControlSmall();
             this.pictureRiver = new System.Windows.Forms.PictureBox();
             this.pictureTurn = new System.Windows.Forms.PictureBox();
             this.pictureFlop3 = new System.Windows.Forms.PictureBox();
@@ -54,15 +70,7 @@
             this.pictureBoxButton0 = new System.Windows.Forms.PictureBox();
             this.pictureBoxButton5 = new System.Windows.Forms.PictureBox();
             this.pictureBoxTable = new System.Windows.Forms.PictureBox();
-            this._trackBarRaiseAmm = new System.Windows.Forms.TrackBar();
-            this.labelHandsPlayed = new System.Windows.Forms.Label();
-            this.labelhands = new System.Windows.Forms.Label();
-            this.playerControlSmall5 = new G5.Controls.PlayerControlSmall();
-            this.playerControlSmall4 = new G5.Controls.PlayerControlSmall();
-            this.playerControlSmall3 = new G5.Controls.PlayerControlSmall();
-            this.playerControlSmall2 = new G5.Controls.PlayerControlSmall();
-            this.playerControlSmall1 = new G5.Controls.PlayerControlSmall();
-            this.playerControlSmall0 = new G5.Controls.PlayerControlSmall();
+            ((System.ComponentModel.ISupportInitialize)(this._trackBarRaiseAmm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRiver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTurn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFlop3)).BeginInit();
@@ -75,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButton0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._trackBarRaiseAmm)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonNext
@@ -87,6 +94,7 @@
             this.buttonNext.TabIndex = 16;
             this.buttonNext.Text = "Next";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Visible = false;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonFold
@@ -148,7 +156,7 @@
             this.labelInPot0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInPot0.Location = new System.Drawing.Point(355, 307);
             this.labelInPot0.Name = "labelInPot0";
-            this.labelInPot0.Size = new System.Drawing.Size(22, 16);
+            this.labelInPot0.Size = new System.Drawing.Size(21, 16);
             this.labelInPot0.TabIndex = 23;
             this.labelInPot0.Text = "$0";
             // 
@@ -158,7 +166,7 @@
             this.labelInPot1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInPot1.Location = new System.Drawing.Point(138, 256);
             this.labelInPot1.Name = "labelInPot1";
-            this.labelInPot1.Size = new System.Drawing.Size(22, 16);
+            this.labelInPot1.Size = new System.Drawing.Size(21, 16);
             this.labelInPot1.TabIndex = 24;
             this.labelInPot1.Text = "$0";
             // 
@@ -168,7 +176,7 @@
             this.labelInPot2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInPot2.Location = new System.Drawing.Point(159, 85);
             this.labelInPot2.Name = "labelInPot2";
-            this.labelInPot2.Size = new System.Drawing.Size(22, 16);
+            this.labelInPot2.Size = new System.Drawing.Size(21, 16);
             this.labelInPot2.TabIndex = 25;
             this.labelInPot2.Text = "$0";
             // 
@@ -178,7 +186,7 @@
             this.labelInPot3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInPot3.Location = new System.Drawing.Point(346, 85);
             this.labelInPot3.Name = "labelInPot3";
-            this.labelInPot3.Size = new System.Drawing.Size(22, 16);
+            this.labelInPot3.Size = new System.Drawing.Size(21, 16);
             this.labelInPot3.TabIndex = 26;
             this.labelInPot3.Text = "$0";
             // 
@@ -188,7 +196,7 @@
             this.labelInPot4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInPot4.Location = new System.Drawing.Point(595, 110);
             this.labelInPot4.Name = "labelInPot4";
-            this.labelInPot4.Size = new System.Drawing.Size(22, 16);
+            this.labelInPot4.Size = new System.Drawing.Size(21, 16);
             this.labelInPot4.TabIndex = 27;
             this.labelInPot4.Text = "$0";
             // 
@@ -198,7 +206,7 @@
             this.labelInPot5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInPot5.Location = new System.Drawing.Point(595, 256);
             this.labelInPot5.Name = "labelInPot5";
-            this.labelInPot5.Size = new System.Drawing.Size(22, 16);
+            this.labelInPot5.Size = new System.Drawing.Size(21, 16);
             this.labelInPot5.TabIndex = 28;
             this.labelInPot5.Text = "$0";
             // 
@@ -208,7 +216,7 @@
             this.labelPot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPot.Location = new System.Drawing.Point(275, 221);
             this.labelPot.Name = "labelPot";
-            this.labelPot.Size = new System.Drawing.Size(65, 16);
+            this.labelPot.Size = new System.Drawing.Size(64, 16);
             this.labelPot.TabIndex = 35;
             this.labelPot.Text = "Pot: $1.26";
             // 
@@ -220,6 +228,165 @@
             this.listBoxLog.Name = "listBoxLog";
             this.listBoxLog.Size = new System.Drawing.Size(291, 108);
             this.listBoxLog.TabIndex = 36;
+            // 
+            // _trackBarRaiseAmm
+            // 
+            this._trackBarRaiseAmm.AutoSize = false;
+            this._trackBarRaiseAmm.Location = new System.Drawing.Point(300, 429);
+            this._trackBarRaiseAmm.Name = "_trackBarRaiseAmm";
+            this._trackBarRaiseAmm.Size = new System.Drawing.Size(153, 50);
+            this._trackBarRaiseAmm.TabIndex = 39;
+            this._trackBarRaiseAmm.Scroll += new System.EventHandler(this.trackBarRaiseAmm_Scroll);
+            // 
+            // labelHandsPlayed
+            // 
+            this.labelHandsPlayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHandsPlayed.Location = new System.Drawing.Point(664, 403);
+            this.labelHandsPlayed.Name = "labelHandsPlayed";
+            this.labelHandsPlayed.Size = new System.Drawing.Size(60, 15);
+            this.labelHandsPlayed.TabIndex = 41;
+            this.labelHandsPlayed.Text = "0";
+            this.labelHandsPlayed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelhands
+            // 
+            this.labelhands.BackColor = System.Drawing.SystemColors.ControlText;
+            this.labelhands.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelhands.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelhands.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelhands.Location = new System.Drawing.Point(609, 400);
+            this.labelhands.Name = "labelhands";
+            this.labelhands.Size = new System.Drawing.Size(118, 21);
+            this.labelhands.TabIndex = 40;
+            this.labelhands.Text = "Hands :";
+            this.labelhands.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // checkBoxNoRebuy
+            // 
+            this.checkBoxNoRebuy.BackColor = System.Drawing.SystemColors.ControlText;
+            this.checkBoxNoRebuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxNoRebuy.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.checkBoxNoRebuy.Location = new System.Drawing.Point(616, 434);
+            this.checkBoxNoRebuy.Name = "checkBoxNoRebuy";
+            this.checkBoxNoRebuy.Size = new System.Drawing.Size(83, 18);
+            this.checkBoxNoRebuy.TabIndex = 43;
+            this.checkBoxNoRebuy.Text = "No Rebuy";
+            this.checkBoxNoRebuy.UseVisualStyleBackColor = false;
+            // 
+            // labelbbWon0
+            // 
+            this.labelbbWon0.AutoSize = true;
+            this.labelbbWon0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelbbWon0.Location = new System.Drawing.Point(321, 390);
+            this.labelbbWon0.Name = "labelbbWon0";
+            this.labelbbWon0.Size = new System.Drawing.Size(80, 16);
+            this.labelbbWon0.TabIndex = 44;
+            this.labelbbWon0.Text = "0 rb 0bb/100";
+            // 
+            // labelbbWon1
+            // 
+            this.labelbbWon1.AutoSize = true;
+            this.labelbbWon1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelbbWon1.Location = new System.Drawing.Point(16, 339);
+            this.labelbbWon1.Name = "labelbbWon1";
+            this.labelbbWon1.Size = new System.Drawing.Size(80, 16);
+            this.labelbbWon1.TabIndex = 45;
+            this.labelbbWon1.Text = "0 rb 0bb/100";
+            // 
+            // labelbbWon2
+            // 
+            this.labelbbWon2.AutoSize = true;
+            this.labelbbWon2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelbbWon2.Location = new System.Drawing.Point(37, 24);
+            this.labelbbWon2.Name = "labelbbWon2";
+            this.labelbbWon2.Size = new System.Drawing.Size(80, 16);
+            this.labelbbWon2.TabIndex = 46;
+            this.labelbbWon2.Text = "0 rb 0bb/100";
+            // 
+            // labelbbWon3
+            // 
+            this.labelbbWon3.AutoSize = true;
+            this.labelbbWon3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelbbWon3.Location = new System.Drawing.Point(434, 22);
+            this.labelbbWon3.Name = "labelbbWon3";
+            this.labelbbWon3.Size = new System.Drawing.Size(80, 16);
+            this.labelbbWon3.TabIndex = 47;
+            this.labelbbWon3.Text = "0 rb 0bb/100";
+            // 
+            // labelbbWon4
+            // 
+            this.labelbbWon4.AutoSize = true;
+            this.labelbbWon4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelbbWon4.Location = new System.Drawing.Point(613, 24);
+            this.labelbbWon4.Name = "labelbbWon4";
+            this.labelbbWon4.Size = new System.Drawing.Size(80, 16);
+            this.labelbbWon4.TabIndex = 48;
+            this.labelbbWon4.Text = "0 rb 0bb/100";
+            // 
+            // labelbbWon5
+            // 
+            this.labelbbWon5.AutoSize = true;
+            this.labelbbWon5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelbbWon5.Location = new System.Drawing.Point(613, 339);
+            this.labelbbWon5.Name = "labelbbWon5";
+            this.labelbbWon5.Size = new System.Drawing.Size(80, 16);
+            this.labelbbWon5.TabIndex = 49;
+            this.labelbbWon5.Text = "0 rb 0bb/100";
+            // 
+            // playerControlSmall5
+            // 
+            this.playerControlSmall5.BackColor = System.Drawing.Color.Transparent;
+            this.playerControlSmall5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playerControlSmall5.Location = new System.Drawing.Point(612, 278);
+            this.playerControlSmall5.Name = "playerControlSmall5";
+            this.playerControlSmall5.Size = new System.Drawing.Size(118, 56);
+            this.playerControlSmall5.TabIndex = 22;
+            // 
+            // playerControlSmall4
+            // 
+            this.playerControlSmall4.BackColor = System.Drawing.Color.Transparent;
+            this.playerControlSmall4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playerControlSmall4.Location = new System.Drawing.Point(612, 45);
+            this.playerControlSmall4.Name = "playerControlSmall4";
+            this.playerControlSmall4.Size = new System.Drawing.Size(118, 56);
+            this.playerControlSmall4.TabIndex = 21;
+            // 
+            // playerControlSmall3
+            // 
+            this.playerControlSmall3.BackColor = System.Drawing.Color.Transparent;
+            this.playerControlSmall3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playerControlSmall3.Location = new System.Drawing.Point(310, 21);
+            this.playerControlSmall3.Name = "playerControlSmall3";
+            this.playerControlSmall3.Size = new System.Drawing.Size(118, 56);
+            this.playerControlSmall3.TabIndex = 20;
+            // 
+            // playerControlSmall2
+            // 
+            this.playerControlSmall2.BackColor = System.Drawing.Color.Transparent;
+            this.playerControlSmall2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playerControlSmall2.Location = new System.Drawing.Point(35, 45);
+            this.playerControlSmall2.Name = "playerControlSmall2";
+            this.playerControlSmall2.Size = new System.Drawing.Size(118, 56);
+            this.playerControlSmall2.TabIndex = 19;
+            this.playerControlSmall2.Load += new System.EventHandler(this.playerControlSmall2_Load);
+            // 
+            // playerControlSmall1
+            // 
+            this.playerControlSmall1.BackColor = System.Drawing.Color.Transparent;
+            this.playerControlSmall1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playerControlSmall1.Location = new System.Drawing.Point(14, 278);
+            this.playerControlSmall1.Name = "playerControlSmall1";
+            this.playerControlSmall1.Size = new System.Drawing.Size(118, 56);
+            this.playerControlSmall1.TabIndex = 18;
+            // 
+            // playerControlSmall0
+            // 
+            this.playerControlSmall0.BackColor = System.Drawing.Color.Transparent;
+            this.playerControlSmall0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playerControlSmall0.Location = new System.Drawing.Point(319, 329);
+            this.playerControlSmall0.Name = "playerControlSmall0";
+            this.playerControlSmall0.Size = new System.Drawing.Size(118, 56);
+            this.playerControlSmall0.TabIndex = 17;
             // 
             // pictureRiver
             // 
@@ -338,7 +505,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxTable.ErrorImage = null;
-            this.pictureBoxTable.Image = global::G5.Controls.Resources.TableSixMax4;
+            this.pictureBoxTable.Image = global::G5.Controls.Resources.TableSixMax5;
             this.pictureBoxTable.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxTable.Name = "pictureBoxTable";
             this.pictureBoxTable.Size = new System.Drawing.Size(750, 511);
@@ -346,97 +513,17 @@
             this.pictureBoxTable.TabIndex = 0;
             this.pictureBoxTable.TabStop = false;
             // 
-            // _trackBarRaiseAmm
-            // 
-            this._trackBarRaiseAmm.AutoSize = false;
-            this._trackBarRaiseAmm.Location = new System.Drawing.Point(300, 429);
-            this._trackBarRaiseAmm.Name = "_trackBarRaiseAmm";
-            this._trackBarRaiseAmm.Size = new System.Drawing.Size(153, 50);
-            this._trackBarRaiseAmm.TabIndex = 39;
-            this._trackBarRaiseAmm.Scroll += new System.EventHandler(this.trackBarRaiseAmm_Scroll);
-            // 
-            // labelHandsPlayed
-            // 
-            this.labelHandsPlayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHandsPlayed.Location = new System.Drawing.Point(90, 14);
-            this.labelHandsPlayed.Name = "labelHandsPlayed";
-            this.labelHandsPlayed.Size = new System.Drawing.Size(60, 15);
-            this.labelHandsPlayed.TabIndex = 41;
-            this.labelHandsPlayed.Text = "0";
-            this.labelHandsPlayed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelhands
-            // 
-            this.labelhands.BackColor = System.Drawing.SystemColors.ControlText;
-            this.labelhands.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelhands.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelhands.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelhands.Location = new System.Drawing.Point(35, 11);
-            this.labelhands.Name = "labelhands";
-            this.labelhands.Size = new System.Drawing.Size(118, 21);
-            this.labelhands.TabIndex = 40;
-            this.labelhands.Text = "Hands :";
-            this.labelhands.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // playerControlSmall5
-            // 
-            this.playerControlSmall5.BackColor = System.Drawing.Color.Transparent;
-            this.playerControlSmall5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playerControlSmall5.Location = new System.Drawing.Point(612, 278);
-            this.playerControlSmall5.Name = "playerControlSmall5";
-            this.playerControlSmall5.Size = new System.Drawing.Size(118, 56);
-            this.playerControlSmall5.TabIndex = 22;
-            // 
-            // playerControlSmall4
-            // 
-            this.playerControlSmall4.BackColor = System.Drawing.Color.Transparent;
-            this.playerControlSmall4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playerControlSmall4.Location = new System.Drawing.Point(612, 45);
-            this.playerControlSmall4.Name = "playerControlSmall4";
-            this.playerControlSmall4.Size = new System.Drawing.Size(118, 56);
-            this.playerControlSmall4.TabIndex = 21;
-            // 
-            // playerControlSmall3
-            // 
-            this.playerControlSmall3.BackColor = System.Drawing.Color.Transparent;
-            this.playerControlSmall3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playerControlSmall3.Location = new System.Drawing.Point(310, 21);
-            this.playerControlSmall3.Name = "playerControlSmall3";
-            this.playerControlSmall3.Size = new System.Drawing.Size(118, 56);
-            this.playerControlSmall3.TabIndex = 20;
-            // 
-            // playerControlSmall2
-            // 
-            this.playerControlSmall2.BackColor = System.Drawing.Color.Transparent;
-            this.playerControlSmall2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playerControlSmall2.Location = new System.Drawing.Point(35, 45);
-            this.playerControlSmall2.Name = "playerControlSmall2";
-            this.playerControlSmall2.Size = new System.Drawing.Size(118, 56);
-            this.playerControlSmall2.TabIndex = 19;
-            this.playerControlSmall2.Load += new System.EventHandler(this.playerControlSmall2_Load);
-            // 
-            // playerControlSmall1
-            // 
-            this.playerControlSmall1.BackColor = System.Drawing.Color.Transparent;
-            this.playerControlSmall1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playerControlSmall1.Location = new System.Drawing.Point(14, 278);
-            this.playerControlSmall1.Name = "playerControlSmall1";
-            this.playerControlSmall1.Size = new System.Drawing.Size(118, 56);
-            this.playerControlSmall1.TabIndex = 18;
-            // 
-            // playerControlSmall0
-            // 
-            this.playerControlSmall0.BackColor = System.Drawing.Color.Transparent;
-            this.playerControlSmall0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.playerControlSmall0.Location = new System.Drawing.Point(319, 329);
-            this.playerControlSmall0.Name = "playerControlSmall0";
-            this.playerControlSmall0.Size = new System.Drawing.Size(118, 56);
-            this.playerControlSmall0.TabIndex = 17;
-            // 
             // GameTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelbbWon5);
+            this.Controls.Add(this.labelbbWon4);
+            this.Controls.Add(this.labelbbWon3);
+            this.Controls.Add(this.labelbbWon2);
+            this.Controls.Add(this.labelbbWon1);
+            this.Controls.Add(this.labelbbWon0);
+            this.Controls.Add(this.checkBoxNoRebuy);
             this.Controls.Add(this.labelHandsPlayed);
             this.Controls.Add(this.labelhands);
             this.Controls.Add(this.listBoxLog);
@@ -474,6 +561,7 @@
             this.Controls.Add(this.pictureBoxTable);
             this.Name = "GameTableControl";
             this.Size = new System.Drawing.Size(750, 511);
+            ((System.ComponentModel.ISupportInitialize)(this._trackBarRaiseAmm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRiver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTurn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFlop3)).EndInit();
@@ -486,7 +574,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButton0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButton5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._trackBarRaiseAmm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,5 +616,12 @@
         private System.Windows.Forms.ListBox listBoxLog;
         private System.Windows.Forms.Label labelHandsPlayed;
         private System.Windows.Forms.Label labelhands;
+        private System.Windows.Forms.CheckBox checkBoxNoRebuy;
+        private System.Windows.Forms.Label labelbbWon0;
+        private System.Windows.Forms.Label labelbbWon1;
+        private System.Windows.Forms.Label labelbbWon2;
+        private System.Windows.Forms.Label labelbbWon3;
+        private System.Windows.Forms.Label labelbbWon4;
+        private System.Windows.Forms.Label labelbbWon5;
     }
 }

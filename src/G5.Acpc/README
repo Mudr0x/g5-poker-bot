@@ -60,7 +60,7 @@ One/Two Paragraph Summary of Technique
 
 It traverses the game tree and tries to compute expected value of each possible action. It chooses the 
 action with highest expected value. Opponent strategy (action probability distributions at villain's nodes)
-is modelled using Bayesian graphical modelling. Prior probabilities for the model are obtained from on-line 
+is modelled using Bayesian graphical modeling. Prior probabilities for the model are obtained from on-line 
 hand histories.
 
 References to relevant papers, if any:

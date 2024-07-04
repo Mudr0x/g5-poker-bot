@@ -8,10 +8,10 @@ namespace G5Cpp
     {
         bool checkForStraightFlush(HandStrength& handStrength, const Card* cards)
         {
-            bool isFlush = (cards[0].suite() == cards[1].suite()) &&
-                            (cards[0].suite() == cards[2].suite()) &&
-                            (cards[0].suite() == cards[3].suite()) &&
-                            (cards[0].suite() == cards[4].suite());
+            bool isFlush = (cards[0].suit() == cards[1].suit()) &&
+                            (cards[0].suit() == cards[2].suit()) &&
+                            (cards[0].suit() == cards[3].suit()) &&
+                            (cards[0].suit() == cards[4].suit());
 
             bool isSFlush = false;
 
@@ -120,10 +120,10 @@ namespace G5Cpp
 
         bool checkForFlush(HandStrength& handStrength, const Card* cards)
         {
-            bool isFlush = (cards[0].suite() == cards[1].suite()) &&
-                            (cards[0].suite() == cards[2].suite()) &&
-                            (cards[0].suite() == cards[3].suite()) &&
-                            (cards[0].suite() == cards[4].suite());
+            bool isFlush = (cards[0].suit() == cards[1].suit()) &&
+                            (cards[0].suit() == cards[2].suit()) &&
+                            (cards[0].suit() == cards[3].suit()) &&
+                            (cards[0].suit() == cards[4].suit());
 
             if (isFlush)
             {
@@ -487,7 +487,7 @@ namespace G5Cpp
         return maxHandStrangthValue;
     }
 
-    int holdem_GetFlushRank(const HoleCards& heroHoleCards, const Card* sortedBoard, int boardLen, Card::Suite suite)
+    int holdem_GetFlushRank(const HoleCards& heroHoleCards, const Card* sortedBoard, int boardLen, Card::Suit suit)
     {
         assert (boardLen >= 3);
 
@@ -499,7 +499,7 @@ namespace G5Cpp
 
         for (int n=5, k=0; n>0; k++)
         {
-            if (allCards[k].suite() == suite)
+            if (allCards[k].suit() == suit)
             {
                 sum += weight * (int)allCards[k].rank();
                 weight /= 15;

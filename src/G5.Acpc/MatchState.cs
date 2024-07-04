@@ -145,7 +145,7 @@ namespace G5.Acpc
             {
                 char actionChar = parser.readChar();
                 ActionType type = ActionType.Fold;
-                int ammount = 0;
+                int amount = 0;
 
                 if (actionChar == 'c')
                 {
@@ -155,14 +155,14 @@ namespace G5.Acpc
                 {
                     type = ActionType.Raise;
                     var ammStr = parser.readUntil("crf", false);
-                    ammount = int.Parse(ammStr);
+                    amount = int.Parse(ammStr);
                 }
                 else // if (actionChar == 'f')
                 {
                     type = ActionType.Fold;
                 }
 
-                listOfActions.Add(new ActionInfo(type, ammount));
+                listOfActions.Add(new ActionInfo(type, amount));
             }
 
             return listOfActions;
@@ -264,7 +264,7 @@ namespace G5.Acpc
 
                 if (startStr != "MATCHSTATE")
                 {
-                    Console.WriteLine("Expected MATCHSTATE: at beggining of the message.");
+                    Console.WriteLine("Expected MATCHSTATE: at begining of the message.");
                     return null;
                 }
 
@@ -306,7 +306,7 @@ namespace G5.Acpc
 
                 if (startStr != "STATE")
                 {
-                    Console.WriteLine("Expected MATCHSTATE: at beggining of the message.");
+                    Console.WriteLine("Expected MATCHSTATE: at begining of the message.");
                     return null;
                 }
 

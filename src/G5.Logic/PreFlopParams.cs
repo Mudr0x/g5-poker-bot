@@ -32,7 +32,7 @@ namespace G5.Logic
         {
             bool forced = true;
 
-            if (Position == Position.BigBlind)
+            if (Position == Position.BB)
             {
                 forced = NumRaises > 0;
             }
@@ -47,10 +47,10 @@ namespace G5.Logic
             if (tableType == TableType.HeadsUp)
             {
                 for (int numRaises = 0; numRaises <= 4; numRaises++)
-                    allParams.Add(new PreFlopParams(tableType, Position.SmallBlind, 0, numRaises, 2, ActionType.Fold, true));
+                    allParams.Add(new PreFlopParams(tableType, Position.SB, 0, numRaises, 2, ActionType.Fold, true));
 
                 for (int numRaises = 0; numRaises <= 4; numRaises++)
-                    allParams.Add(new PreFlopParams(tableType, Position.BigBlind, 0, numRaises, 2, ActionType.Fold, false));
+                    allParams.Add(new PreFlopParams(tableType, Position.BB, 0, numRaises, 2, ActionType.Fold, false));
             }
             else
             {
@@ -71,9 +71,9 @@ namespace G5.Logic
                     {
                         for (int numPl = 2; numPl <= 3; numPl++)
                         {
-                            allParams.Add(new PreFlopParams(tableType, Position.BigBlind, 0, 1, numPl, previousAction, inPos != 0));
-                            allParams.Add(new PreFlopParams(tableType, Position.BigBlind, 1, 1, numPl, previousAction, inPos != 0));
-                            allParams.Add(new PreFlopParams(tableType, Position.BigBlind, 0, 2, numPl, previousAction, inPos != 0));
+                            allParams.Add(new PreFlopParams(tableType, Position.BB, 0, 1, numPl, previousAction, inPos != 0));
+                            allParams.Add(new PreFlopParams(tableType, Position.BB, 1, 1, numPl, previousAction, inPos != 0));
+                            allParams.Add(new PreFlopParams(tableType, Position.BB, 0, 2, numPl, previousAction, inPos != 0));
                         }
                     }
                 }
@@ -88,11 +88,11 @@ namespace G5.Logic
 
             if (TableType == TableType.HeadsUp)
             {
-                if (Position == Position.SmallBlind)
+                if (Position == Position.SB)
                 {
                     index = Math.Min(NumRaises, 4);
                 }
-                else if (Position == Position.BigBlind)
+                else if (Position == Position.BB)
                 {
                     index = 5 + Math.Min(NumRaises, 4);
                 }

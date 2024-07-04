@@ -29,7 +29,7 @@ namespace G5Cpp
         int getTwoPairRank() const;
         int getTripsRank() const;
         int getStreightRank() const;
-        Card::Suite getFlushSuite() const;
+        Card::Suit getFlushSuite() const;
         int getFullRank() const;
         int getPokerRank() const;
 

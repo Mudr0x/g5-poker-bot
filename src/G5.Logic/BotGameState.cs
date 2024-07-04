@@ -46,7 +46,7 @@ namespace G5.Logic
         {
             for (int i = 0; i < _players.Count; i++)
             {
-                if (_players[i].PreFlopPosition == Position.SmallBlind)
+                if (_players[i].PreFlopPosition == Position.SB)
                     return i;
             }
 
@@ -57,7 +57,7 @@ namespace G5.Logic
         {
             for (int i = 0; i < _players.Count; i++)
             {
-                if (_players[i].PreFlopPosition == Position.BigBlind)
+                if (_players[i].PreFlopPosition == Position.BB)
                     return i;
             }
 
@@ -96,7 +96,8 @@ namespace G5.Logic
 
             for (int i=0; i< playerNames.Count(); i++)
             {
-                _players.Add(new Player(playerNames[i], stackSizes[i], null));
+                Position position = (Position)i;
+                _players.Add(new Player(playerNames[i], stackSizes[i], null, position));
             }
 
             _preFlopChartsLevel = preFlopChartsLevel;
@@ -121,44 +122,44 @@ namespace G5.Logic
             {
                 positionsToAssign = new List<Position>
                 {
-                    Position.SmallBlind,
-                    Position.BigBlind
+                    Position.SB,
+                    Position.BB
                 };
 
-                playerToActPosition = Position.SmallBlind;
+                playerToActPosition = Position.SB;
             }
             else if (numPlayersInPlay == 3)
             {
                 positionsToAssign = new List<Position>
                 {
-                    Position.Button,
-                    Position.SmallBlind,
-                    Position.BigBlind
+                    Position.BU,
+                    Position.SB,
+                    Position.BB
                 };
 
-                playerToActPosition = Position.Button;
+                playerToActPosition = Position.BU;
             }
             else if (numPlayersInPlay == 4)
             {
                 positionsToAssign = new List<Position>
                 {
-                    Position.Button,
-                    Position.SmallBlind,
-                    Position.BigBlind,
-                    Position.CutOff,
+                    Position.BU,
+                    Position.SB,
+                    Position.BB,
+                    Position.CO,
                 };
 
-                playerToActPosition = Position.CutOff;
+                playerToActPosition = Position.CO;
             }
             else if (numPlayersInPlay == 5)
             {
                 positionsToAssign = new List<Position>
                 {
-                    Position.Button,
-                    Position.SmallBlind,
-                    Position.BigBlind,
+                    Position.BU,
+                    Position.SB,
+                    Position.BB,
                     Position.HJ,
-                    Position.CutOff,
+                    Position.CO,
                 };
 
                 playerToActPosition = Position.HJ;
@@ -167,12 +168,12 @@ namespace G5.Logic
             {
                 positionsToAssign = new List<Position>
                 {
-                    Position.Button,
-                    Position.SmallBlind,
-                    Position.BigBlind,
+                    Position.BU,
+                    Position.SB,
+                    Position.BB,
                     Position.UTG,
                     Position.HJ,
-                    Position.CutOff,
+                    Position.CO,
                 };
 
                 playerToActPosition = Position.UTG;
@@ -182,9 +183,9 @@ namespace G5.Logic
 
             while (positionsToAssign.Count > 0)
             {
-                if (positionsToAssign[0] == Position.Button) // Even sittingOutPlayers can be dealer so just assign dealer!
+                if (positionsToAssign[0] == Position.BU) // Even sittingOutPlayers can be dealer so just assign dealer!
                 {
-                    _players[ind].PreFlopPosition = Position.Button;
+                    _players[ind].PreFlopPosition = Position.BU;
                     positionsToAssign.RemoveAt(0);
                 }
                 else if (sittingOutPlayers.Contains(ind))
@@ -397,17 +398,17 @@ namespace G5.Logic
             return max;
         }
 
-        public int getRaiseAmmount()
+        public int getRaiseAmount()
         {
-            int ammountToCall = getMaxMoneyInThePot() - getPlayerToAct().MoneyInPot;
+            int amountToCall = getMaxMoneyInThePot() - getPlayerToAct().MoneyInPot;
 
             if (_street == Street.PreFlop)
             {
-                return potSize() + 2 * ammountToCall;
+                return potSize() + 2 * amountToCall;
             }
             else
             {
-                return (RAISE_SIZE_NOM * (potSize() + ammountToCall)) / RAISE_SIZE_DEN + ammountToCall;
+                return (RAISE_SIZE_NOM * (potSize() + amountToCall)) / RAISE_SIZE_DEN + amountToCall;
             }
         }
 
@@ -675,25 +676,25 @@ namespace G5.Logic
 
         public ActionType playerCheckCalls()
         {
-            int ammountToCall = getAmountToCall();
+            int amountToCall = getAmountToCall();
             ActionType actionType;
 
-            if (ammountToCall >= getPlayerToAct().Stack)
+            if (amountToCall >= getPlayerToAct().Stack)
             {
                 // Important that this is before player state changes (getPlayerToAct().GoesAllIn(...))
                 _actionEstimator.newAction(ActionType.Call, this);
 
-                ammountToCall = getPlayerToAct().Stack;
+                amountToCall = getPlayerToAct().Stack;
                 getPlayerToAct().GoesAllIn();
                 actionType = ActionType.AllIn;
                 _numCallers++;
             }
-            else if (ammountToCall > 0) // Ima betova
+            else if (amountToCall > 0) // Ima betova
             {
                 // Important that this is before player state changes (getPlayerToAct().Calls(...))
                 _actionEstimator.newAction(ActionType.Call, this);
 
-                getPlayerToAct().Calls(ammountToCall);
+                getPlayerToAct().Calls(amountToCall);
                 actionType = ActionType.Call;
                 _numCallers++;
             }
@@ -706,8 +707,8 @@ namespace G5.Logic
                 actionType = ActionType.Check;
             }
 
-            Console.WriteLine($"{getPlayerToAct().Name} checks/calls: {ammountToCall}");
-            _currentHand.addAction(_street, getPlayerToAct().Name, actionType, ammountToCall);
+            //Console.WriteLine($"{getPlayerToAct().Name} checks/calls: {amountToCall}");
+            _currentHand.addAction(_street, getPlayerToAct().Name, actionType, amountToCall);
 
             goToNextPlayer();
             return actionType;
@@ -724,17 +725,17 @@ namespace G5.Logic
             }
         }
 
-        public ActionType playerBetRaisesBy(int ammount)
+        public ActionType playerBetRaisesBy(int amount)
         {
             ActionType actionType = ActionType.Fold;
             var betOrRaise = (getAmountToCall() == 0) ? ActionType.Bet : ActionType.Raise;
 
-            if (ammount >= getPlayerToAct().Stack)
+            if (amount >= getPlayerToAct().Stack)
             {
                 // Important that this is before player state changes (getPlayerToAct().GoesAllIn())
                 _actionEstimator.newAction(betOrRaise, this);
 
-                ammount = getPlayerToAct().Stack;
+                amount = getPlayerToAct().Stack;
                 getPlayerToAct().GoesAllIn();
                 actionType = ActionType.AllIn;
             }
@@ -743,12 +744,12 @@ namespace G5.Logic
                 // Important that this is before player state changes (getPlayerToAct().BetsOrRaisesTo(...))
                 _actionEstimator.newAction(betOrRaise, this);
 
-                getPlayerToAct().BetsOrRaisesTo(getPlayerToAct().MoneyInPot + ammount);
+                getPlayerToAct().BetsOrRaisesTo(getPlayerToAct().MoneyInPot + amount);
                 actionType = betOrRaise;
             }
 
-            Console.WriteLine($"{getPlayerToAct().Name} bets/raises by: {ammount}");
-            _currentHand.addAction(_street, getPlayerToAct().Name, actionType, ammount);
+            //Console.WriteLine($"{getPlayerToAct().Name} bets/raises by: {amount}");
+            _currentHand.addAction(_street, getPlayerToAct().Name, actionType, amount);
 
             if (actionType != ActionType.AllIn)
                 _bettors.Add(getPlayerToAct().PreFlopPosition);
@@ -764,7 +765,7 @@ namespace G5.Logic
 
         public void playerFolds()
         {
-            Console.WriteLine(getPlayerToAct().Name + " folds");
+            //Console.WriteLine(getPlayerToAct().Name + " folds");
             _currentHand.addAction(_street, getPlayerToAct().Name, ActionType.Fold, 0);
 
             getPlayerToAct().Folds();
@@ -773,7 +774,7 @@ namespace G5.Logic
 
         public void playerGoesAllIn()
         {
-            Console.WriteLine(getPlayerToAct().Name + " goes All-in");
+            //Console.WriteLine(getPlayerToAct().Name + " goes All-in");
             _currentHand.addAction(_street, getPlayerToAct().Name, ActionType.AllIn, 0);
 
             getPlayerToAct().GoesAllIn();
@@ -871,7 +872,7 @@ namespace G5.Logic
             }
 
             var startTime = DateTime.Now;
-            int ammountToCall = getAmountToCall();
+            int amountToCall = getAmountToCall();
 
             // If we are post flop with many opponents than its too time consumming to calculate.
             if (nOfOpponents < 4 || _street == Street.PreFlop)
@@ -880,8 +881,8 @@ namespace G5.Logic
             }
             else
             {
-                // If ammountToCall is 0, it can check
-                bd.checkCallEV = -ammountToCall;
+                // If amountToCall is 0, it can check
+                bd.checkCallEV = -amountToCall;
                 bd.betRaiseEV = -10.0f;
             }
 
@@ -891,9 +892,9 @@ namespace G5.Logic
             if (pfcActionDistribution != null)
             {
                 var heroPos = getHero().PreFlopPosition;
-                var villianPos = (_bettors.Count > 0) ? _bettors.Last() : Position.Empty;
+                var villainPos = (_bettors.Count > 0) ? _bettors.Last() : Position.Empty;
 
-                bd.message += $" -> We have pre-flop chart for this situation (Hero pos {heroPos}, villianPos {villianPos}, num bets {_numBets}, num callers {_numCallers}).\n";
+                bd.message += $" -> We have pre-flop chart for this situation (Hero pos {heroPos}, villianPos {villainPos}, num bets {_numBets}, num callers {_numCallers}).\n";
                 bd.message += $" -> We are reading AD, allin prob {pfcActionDistribution.allinProb} br prob {pfcActionDistribution.brProb}, cc prob {pfcActionDistribution.ccProb} (Modeling estimator gave br {bd.betRaiseEV:F2} cc {bd.checkCallEV:F2}).\n";
 
                 bd.actionType = pfcActionDistribution.sample(_rng);
@@ -904,8 +905,8 @@ namespace G5.Logic
                 if (_street == Street.PreFlop)
                 {
                     var heroPos = getHero().PreFlopPosition;
-                    var villianPos = (_bettors.Count > 0) ? _bettors.Last() : Position.Empty;
-                    bd.message += $" -> We do NOT have pre-flop chart for this situation (Hero pos {heroPos}, villianPos {villianPos}, num bets {_numBets}, num callers {_numCallers}).\n";
+                    var villainPos = (_bettors.Count > 0) ? _bettors.Last() : Position.Empty;
+                    bd.message += $" -> We do NOT have pre-flop chart for this situation (Hero pos {heroPos}, villianPos {villainPos}, num bets {_numBets}, num callers {_numCallers}).\n";
                 }
 
                 bd.message += $" -> Using modeling estimator result br {bd.betRaiseEV:F2} cc {bd.checkCallEV:F2}.\n";
@@ -946,25 +947,25 @@ namespace G5.Logic
             {
                 bd.byAmount = 0;
 
-                if (ammountToCall == 0)
+                if (amountToCall == 0)
                 {
-                    bd.message += " -> But ammount to call is 0 so check.\n";
+                    bd.message += " -> But amount to call is 0 so check.\n";
                     bd.actionType = ActionType.Check;
                 }
             }
             else if (bd.actionType == ActionType.Call)
             {
-                bd.byAmount = ammountToCall;
+                bd.byAmount = amountToCall;
 
-                if (ammountToCall == 0)
+                if (amountToCall == 0)
                 {
-                    bd.message += " -> AmmountToCall is 0 -> check.\n";
+                    bd.message += " -> AmountToCall is 0 -> check.\n";
                     bd.actionType = ActionType.Check;
                 }
             }
             else // its raise
             {
-                bd.byAmount = getRaiseAmmount();
+                bd.byAmount = getRaiseAmount();
             }
 
             if ((3 * bd.byAmount / 2) >= _players[_heroInd].Stack)
@@ -974,7 +975,7 @@ namespace G5.Logic
                 bd.actionType = ActionType.AllIn;
             }
 
-            // Remove all leading and trailing white-space characters 
+            // Remove all leading and traiing white-space characters 
             bd.message = bd.message.Trim();
 
             return bd;
