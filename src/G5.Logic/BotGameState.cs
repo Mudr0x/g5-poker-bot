@@ -82,7 +82,7 @@ namespace G5.Logic
             _randomlySampleActions = randomlySampleActions;
 
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            _preFlopCharts = new PreFlopCharts(assemblyFolder + "\\PreFlopCharts\\200bb\\");
+            _preFlopCharts = new PreFlopCharts(assemblyFolder + "\\PreFlopCharts\\100bb\\");
 
             _tableType = tableType;
             _players = new List<Player>();
