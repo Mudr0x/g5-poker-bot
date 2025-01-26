@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -21,6 +21,8 @@ namespace G5.Controls
         private Label _labelHandsPlayed = new Label();
         private CheckBox _checkBoxNoRebuy = new CheckBox();
         private string _raiseText;
+        private static DateTime now = DateTime.Now;
+        private static string handhistory = $"handhistory_{now:yyyyMMdd_HHmmss}.txt";
 
         public event EventHandler NextButtonPressed;
         public event EventHandler FoldButtonPressed;
@@ -184,7 +186,12 @@ namespace G5.Controls
             Console.ResetColor();
 
             // Output logs to HandHistory log file
-            File.AppendAllText("handhistory.txt", str + "\n");
+            if (!Directory.Exists("HandHistory"))
+            {
+                // Create the directory
+                Directory.CreateDirectory("HandHistory");
+            }
+            File.AppendAllText(@"./HandHistory/" + handhistory, str + "\n");
         }
 
         public void updateHandsPlayed(int handsplayed)
