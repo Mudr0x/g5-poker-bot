@@ -426,7 +426,7 @@ namespace G5.PlayVsBots
         private void buttonBetRaise_Click(object sender, int raiseAmount)
         {
             var ra = (raiseAmount == 0) ? _botGameStates[_heroInd].getRaiseAmount() : raiseAmount;
-            var actionStr = (_botGameStates[_heroInd].getNumBets() > 0) ? " raises [" : " bets [" + moneyToString(raiseAmount) + "]";
+            var actionStr = ((_botGameStates[_heroInd].getNumBets() > 0) ? " raises [" : " bets [") + moneyToString(ra) + "]";
             _gameTableControl.log(_botGameStates[_heroInd].getPlayerToAct().Name + actionStr);
 
             playerBetRaisesBy(ra);
